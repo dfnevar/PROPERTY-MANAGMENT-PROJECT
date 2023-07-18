@@ -44,3 +44,64 @@ limit 10;
 select*from airbnb.airbnb
 order by realSum asc
 limit 10;
+
+    
+    SELECT 
+    city AS City, 
+    COUNT(*) AS '# Listings',
+    AVG(realSum) AS 'AVG price',
+    STDDEV(realSum) AS 'Standard deviation'
+FROM 
+    airbnb.airbnb
+WHERE 
+    realSum <= 1500
+    AND weekday = 1
+GROUP BY 
+    city;
+    
+    SELECT 
+    city AS 'City', 
+    COUNT(*) AS '# Listings',
+    ROUND(AVG(realSum), 2) AS 'AVG price',
+    ROUND(STDDEV(realSum), 2) AS 'Standard deviation'
+FROM 
+    airbnb.airbnb
+WHERE 
+    realSum <= 1500
+    AND weekday = 1
+GROUP BY 
+    city;
+    
+SELECT 
+    city,
+    AVG(dist) AS 'AVG distance to center',
+	AVG(metro_dist) AS 'AVG distance to metro',
+    AVG(attr_index) AS 'AVG attraction index',
+    AVG(rest_index) AS 'AVG restaurant index'
+FROM 
+    airbnb.airbnb
+GROUP BY 
+    city;
+
+    SELECT 
+    city,
+    ROUND(AVG(dist), 2) AS 'AVG distance to center',
+    ROUND(AVG(metro_dist), 2) AS 'AVG distance to metro',
+    ROUND(AVG(attr_index), 2) AS 'AVG attraction index',
+    ROUND(AVG(rest_index), 2) AS 'AVG restaurant index'
+FROM 
+    airbnb.airbnb
+WHERE 
+    realSum <= 1500
+    AND weekday = 1
+GROUP BY 
+    city;
+
+
+
+    
+    
+
+
+    
+    
